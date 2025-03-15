@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.AccessType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,6 @@ public class UserController {
 
 	@Autowired
 	public UserController(UserService userService) {
-//		super();
 		this.userService = userService;
 	}
 	

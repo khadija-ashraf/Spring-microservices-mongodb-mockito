@@ -10,7 +10,6 @@ import com.example.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService{
 
-	
 	private final UserRepository userRepo;
 	
 	public UserServiceImpl(UserRepository userRepo) {
@@ -22,8 +21,8 @@ public class UserServiceImpl implements UserService{
 		return userRepo.findAll();
 	}
 
-	public User getUserById(String id) {
-		return userRepo.findById(id).orElseThrow(() -> new RuntimeException("Userd not found "+id));
+	public User getUserById(String id) throws RuntimeException{
+		return userRepo.findById(id).orElseThrow(() -> new RuntimeException("User not found "+id));
 	}
 
 	public User getUserByEmail(String email) {
@@ -48,6 +47,5 @@ public class UserServiceImpl implements UserService{
 	public void deleteUser(String id) {
 		userRepo.deleteById(id);
 	}
-
 
 }

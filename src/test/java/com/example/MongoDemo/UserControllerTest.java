@@ -3,6 +3,7 @@ package com.example.MongoDemo;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 // Import for status(), jsonPath()
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -47,22 +48,10 @@ public class UserControllerTest {
         ResultActions resultActions = mockMvc.perform(post("/users/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(userJson))
-//        		.andDo(print())
+        		.andDo(print())
         		.andDo(log())
                .andExpect(status().isCreated())
                .andExpect(jsonPath("$.name").value("Jane Doe"));
-        
-//        resultActions.andDo(new ResultHandler() {
-//
-//			@Override
-//			public void handle(MvcResult result) throws Exception {
-//				System.out.println("Request URI: " + result.getRequest().getRequestURI());
-//			    System.out.println("Request Method: " + result.getRequest().getMethod());
-//			    System.out.println("Request Headers: " + result.getRequest().getHeader("Custom-Header"));
-//			}
-//        	
-//        });
-        
     }
 	
 }
